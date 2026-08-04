@@ -17,6 +17,12 @@ spec:
           image: europe-west1-docker.pkg.dev/{{PROJECT_ID}}/ride-sharing/trip-service
           ports:
             - containerPort: 8083
+          env:
+            - name: TRIPSERVICE_ADDR
+              valueFrom:
+                configMapKeyRef:
+                  key: TRIPSERVICE_ADDR
+                  name: app-config
           resources:
             requests:
               memory: "64Mi"
